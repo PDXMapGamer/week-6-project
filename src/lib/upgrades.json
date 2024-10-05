@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Curious Child",
+    "cost": 100,
+    "increase": 1
+  },
+  {
+    "id": 2,
+    "name": "Shrine Maiden",
+    "cost": 500,
+    "increase": 5
+  },
+  {
+    "id": 3,
+    "name": "Generous Gentleman",
+    "cost": 1000,
+    "increase": 10
+  },
+  {
+    "id": 4,
+    "name": "Shinto Priest",
+    "cost": 2000,
+    "increase": 20
+  },
+  {
+    "id": 5,
+    "name": "Pilgrimaging Monk",
+    "cost": 5000,
+    "increase": 50
+  },
+  {
+    "id": 6,
+    "name": "Wealthy Patron",
+    "cost": 5000,
+    "increase": 50
+  }
+]
