@@ -1,3 +1,15 @@
+import Title from "./components/Title";
+import Options from "./components/Options";
+import GameArea from "./components/GameArea";
+import ShopArea from "./components/ShopArea";
+
 export default function App() {
-  return <h1>title.</h1>;
+  return (
+    <>
+      <Title />
+      <Options />
+      <GameArea />
+      <ShopArea />
+    </>
+  );
 }

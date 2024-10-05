@@ -1,0 +1,18 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 50px 1fr;
+  font-family: sans-serif, monospace;
+}
+
+@media (orientation: portrait) {
+  #root {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 30px) repeat(2, 1fr);
+  }
+  #title {
+    font-size: 20px;
+  }
+}
