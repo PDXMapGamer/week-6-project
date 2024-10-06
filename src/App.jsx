@@ -9,9 +9,10 @@ export default function App() {
   const coinSoundEffect = new Audio("../public/audio/coindrop.wav");
   const parsedMoney = JSON.parse(localStorage.getItem("money"));
   const parsedIncome = JSON.parse(localStorage.getItem("income"));
+  const parsedSoundSetting = JSON.parse(localStorage.getItem("sound setting"));
   const [currentMoney, setCurrentMoney] = useState(parsedMoney);
   const [income, setIncome] = useState(parsedIncome);
-  const [soundOn, setSoundOn] = useState(true);
+  const [soundOn, setSoundOn] = useState(parsedSoundSetting);
   const onBoxClick = () => {
     setCurrentMoney(currentMoney + 1);
     checkSound("money");
@@ -45,8 +46,10 @@ export default function App() {
   function save() {
     const storedMoney = JSON.stringify(currentMoney);
     const storedIncome = JSON.stringify(income);
+    const storedSoundSetting = JSON.stringify(soundOn);
     localStorage.setItem("money", storedMoney);
     localStorage.setItem("income", storedIncome);
+    localStorage.setItem("sound setting", storedSoundSetting);
   }
   useEffect(() => {
     const incomePerSecondInterval = setInterval(() => {
@@ -57,10 +60,27 @@ export default function App() {
       clearInterval(incomePerSecondInterval);
     };
   }, [currentMoney, income]);
+
+  function onReset() {
+    checkSound("click");
+    setCurrentMoney(0);
+    setIncome(0);
+    save();
+  }
+  function onOption() {
+    setSoundOn(!soundOn);
+    save();
+  }
+  function onShop() {
+    checkSound("click");
+    console.log(
+      "Feature to be implemented later (option menu to have list of options that replace the shop and the shop button brings the shop back, allows additional features to be added later :3)."
+    );
+  }
   return (
     <>
       <Title />
-      <Options />
+      <Options onReset={onReset} onOption={onOption} onShop={onShop} />
       <GameArea currentMoney={currentMoney} income={income} onBoxClick={onBoxClick} />
       <ShopArea currentMoney={currentMoney} income={income} onBuyButtonClick={onBuyButtonClick} />
     </>
