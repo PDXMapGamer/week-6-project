@@ -6,7 +6,9 @@
   grid-template-rows: 50px 1fr;
   font-family: sans-serif, monospace;
 }
-
+body {
+  margin: 0;
+}
 @media (orientation: portrait) {
   #root {
     grid-template-columns: 1fr;

@@ -1,0 +1,25 @@
+:root {
+  --reimu-height: 75%;
+}
+#game-area {
+  position: relative;
+}
+
+#reimu {
+  height: 75%;
+  width: 50%;
+}
+#donation-box {
+  position: absolute;
+  height: 50vh;
+  aspect-ratio: 1.5/1;
+  bottom: 0;
+  right: 0;
+}
+
+@media (orientation: portrait) {
+  #donation-box {
+    height: 25vh;
+    aspect-ratio: 1.5/1;
+  }
+}

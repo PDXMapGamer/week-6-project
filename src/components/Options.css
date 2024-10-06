@@ -1,3 +1,20 @@
 #options {
+  display: flex;
   max-height: 50px;
+}
+.options-button {
+  height: 48px;
+  width: 48px;
+  font-size: 30px;
+  margin-right: auto;
+  padding: 0;
+}
+
+@media (orientation: portrait) {
+  .options-button {
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+    text-align: center;
+  }
 }

@@ -1,0 +1,7 @@
+#shop-area {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: scroll;
+  column-gap: 10px;
+  row-gap: 25px;
+}
