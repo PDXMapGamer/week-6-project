@@ -1,19 +1,7 @@
-import Griditem from "./Griditem";
-import Buybutton from "./Buybutton";
-import "./UpgradeContainer.css";
+// import Griditem from "./Griditem";
+// import Buybutton from "./Buybutton";
+// import "./UpgradeContainer.css";
 
-export default function UpgradeContainer(props) {
-  const propArray = [props.name, props.cost, props.increase];
-  propArray.map((gridItem) => {
-    console.log(gridItem);
-  });
+// export default function UpgradeContainer(props) {
 
-  return (
-    <>
-      <Griditem gridContent={props.name} />
-      <Griditem gridContent={props.cost} />
-      <Griditem gridContent={props.increase} />
-      <Buybutton price={props.cost} increase={props.increase} />
-    </>
-  );
-}
+// }

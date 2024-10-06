@@ -1,24 +1,23 @@
 import "./ShopArea.css";
 import upgrades from "../lib/upgrades.json";
 import Griditem from "./Griditem";
-import UpgradeContainer from "./UpgradeContainer";
-export default function ShopArea() {
-  const shopArea = document.getElementById("shop-area");
-  shopArea.style.gridTemplateRows = `repeat(${upgrades.length + 1}, 1fr)`;
-  // console.log(shopArea);
-  // upgrades.map((upgrade) => {
-  //   console.log(upgrade.name);
-  // });
+import Buybutton from "./Buybutton";
+import ShopHeader from "./ShopHeader";
+export default function ShopArea(props) {
+  const { onBuyButtonClick } = props;
+  // const shopArea = document.getElementById("shop-area");
+  // shopArea.style.gridTemplateRows = `repeat(${upgrades.length + 1}, 1fr)`;
+  // Previous code apparently uneccessary and randomly caused the website to just not load so will be left ommited.
   return (
     <section id="shop-area">
-      <Griditem gridContent="Name:" />
-      <Griditem gridContent="Cost:" />
-      <Griditem gridContent="Income:" />
-      <Griditem gridContent="Buy Button:" />
+      <ShopHeader />
       {upgrades.map((upgrade) => {
         return (
           <>
-            <UpgradeContainer id={upgrade.id} name={upgrade.name} cost={upgrade.cost} increase={upgrade.increase} />
+            <Griditem gridContent={upgrade.name} />
+            <Griditem gridContent={upgrade.cost} />
+            <Griditem gridContent={upgrade.increase} />
+            <Buybutton price={upgrade.cost} increase={upgrade.increase} onBuyButtonClick={onBuyButtonClick} />
           </>
         );
       })}

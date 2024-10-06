@@ -4,7 +4,12 @@
 #game-area {
   position: relative;
 }
-
+#stats {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 24px;
+}
 #reimu {
   height: 75%;
   width: 50%;
