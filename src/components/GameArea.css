@@ -14,6 +14,14 @@
   height: 75%;
   width: 50%;
 }
+#reimu:hover {
+  cursor: not-allowed;
+}
+#donation-box:hover,
+button:hover {
+  cursor: pointer;
+}
+
 #donation-box {
   position: absolute;
   height: 50vh;

@@ -9,6 +9,7 @@ export default function App() {
   const [income, setIncome] = useState(0);
   const onBoxClick = () => {
     setCurrentMoney(currentMoney + 1);
+    save();
   };
   const onBuyButtonClick = (upgradeCost, incomeIncrease) => {
     if (currentMoney < upgradeCost) {
@@ -16,13 +17,18 @@ export default function App() {
     } else {
       setCurrentMoney(currentMoney - upgradeCost);
       setIncome(income + incomeIncrease);
+      save();
     }
   };
+  function save() {
+    //TODO SAVE TO LOCAL STORAGE
+  }
   //TODO: we need an interval managed by useEffect.
   useEffect(
     () => {
       const incomePerSecondInterval = setInterval(() => {
         setCurrentMoney(currentMoney + income);
+        save();
       }, 1000);
       return () => {
         clearInterval(incomePerSecondInterval);
