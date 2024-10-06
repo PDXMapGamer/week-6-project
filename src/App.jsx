@@ -4,40 +4,59 @@ import Options from "./components/Options";
 import GameArea from "./components/GameArea";
 import ShopArea from "./components/ShopArea";
 export default function App() {
-  //TODO: We need 2 states to store yen and yen per second interval, useState.
-  const [currentMoney, setCurrentMoney] = useState(0);
-  const [income, setIncome] = useState(0);
+  const clickSoundEffect = new Audio("../public/audio/button_sfx.mp3");
+  const LsoundEffect = new Audio("../public/audio/unallowed.wav");
+  const coinSoundEffect = new Audio("../public/audio/coindrop.wav");
+  const parsedMoney = JSON.parse(localStorage.getItem("money"));
+  const parsedIncome = JSON.parse(localStorage.getItem("income"));
+  const [currentMoney, setCurrentMoney] = useState(parsedMoney);
+  const [income, setIncome] = useState(parsedIncome);
+  const [soundOn, setSoundOn] = useState(true);
   const onBoxClick = () => {
     setCurrentMoney(currentMoney + 1);
+    checkSound("money");
     save();
   };
   const onBuyButtonClick = (upgradeCost, incomeIncrease) => {
     if (currentMoney < upgradeCost) {
-      console.log("Can not afford.");
+      checkSound("buzzer");
     } else {
       setCurrentMoney(currentMoney - upgradeCost);
+      checkSound("click");
       setIncome(income + incomeIncrease);
       save();
     }
   };
-  function save() {
-    //TODO SAVE TO LOCAL STORAGE
+  function checkSound(soundType) {
+    if (soundOn) {
+      switch (soundType) {
+        case "money":
+          coinSoundEffect.play();
+          break;
+        case "click":
+          clickSoundEffect.play();
+          break;
+        case "buzzer":
+          LsoundEffect.play();
+          break;
+      }
+    }
   }
-  //TODO: we need an interval managed by useEffect.
-  useEffect(
-    () => {
-      const incomePerSecondInterval = setInterval(() => {
-        setCurrentMoney(currentMoney + income);
-        save();
-      }, 1000);
-      return () => {
-        clearInterval(incomePerSecondInterval);
-      };
-    },
-    [currentMoney, income]
-
-    //TODO ON DIFFERANT PAGE: give upgrades some logic.
-  );
+  function save() {
+    const storedMoney = JSON.stringify(currentMoney);
+    const storedIncome = JSON.stringify(income);
+    localStorage.setItem("money", storedMoney);
+    localStorage.setItem("income", storedIncome);
+  }
+  useEffect(() => {
+    const incomePerSecondInterval = setInterval(() => {
+      setCurrentMoney(currentMoney + income);
+      save();
+    }, 1000);
+    return () => {
+      clearInterval(incomePerSecondInterval);
+    };
+  }, [currentMoney, income]);
   return (
     <>
       <Title />
